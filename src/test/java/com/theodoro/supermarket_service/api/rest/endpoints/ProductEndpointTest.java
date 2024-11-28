@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import static com.theodoro.supermarket_service.api.rest.endpoints.ProductEndpoint.PRODUCT_RESOURCE_PATH;
 import static com.theodoro.supermarket_service.api.rest.endpoints.ProductEndpoint.PRODUCT_SELF_PATH;
-import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;

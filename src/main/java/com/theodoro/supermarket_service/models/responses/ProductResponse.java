@@ -12,7 +12,6 @@ import org.springframework.hateoas.server.core.Relation;
         "name",
         "price"
 })
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "Product", collectionRelation = "Products")
 public class ProductResponse extends RepresentationModel<ProductResponse>{
