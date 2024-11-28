@@ -59,6 +59,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- PostGreSQL Connector -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 		<!-- Database in Memory for Tests -->
 		<dependency>

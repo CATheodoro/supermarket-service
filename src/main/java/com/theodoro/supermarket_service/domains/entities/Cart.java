@@ -2,6 +2,7 @@ package com.theodoro.supermarket_service.domains.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,7 @@ public class Cart {
     private Integer totalPrice;
 
     @Column(name = "ITEMS")
-    private List<String> items;
+    private List<String> items = new ArrayList<>();
 
     public String getId() {
         return id;

@@ -8,8 +8,11 @@ import com.theodoro.supermarket_service.models.repositories.CartRepository;
 import com.theodoro.supermarket_service.models.requests.CartItemRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,27 +26,31 @@ public class CartItemService {
         this.cartRepository = cartRepository;
     }
 
-    public CartItem addItemToCart(Cart cart, Product product, @Valid CartItemRequest cartItemRequest) {
-        CartItem cartItem = cart.getItems()
-                .stream()
-                .filter(id -> id.equals(product.getId()))
-                .findFirst()
-                .map(id -> new CartItem())
-                .orElse(new CartItem(
-                        cartItemRequest,
-                        cart,
-                        product
-                ));
-
-        if (cartItem.getId() != null){
-            cartItem.setQuantity(cartItem.getQuantity() + cartItemRequest.getQuantity());
-        }
-        cart.getItems().add(cartItem.getId());
-        cartRepository.save(cart);
-        return cartItemRepository.save(cartItem);
+    public CartItem addItemToCart(Cart cart, Product product, Integer cartItemsQuantity) {
+//        CartItem cartItem = cart.getItems()
+//                .stream()
+//                .filter(item -> item.getProduct().getId().equals(product.getId()))
+//                .findFirst().orElse(new CartItem());
+//        if (cartItem.getId() == null) {
+//            cartItem.setIdCart(cart.getId());
+//            cartItem.setProduct(product);
+//            cartItem.setQuantity(cartItemsQuantity);
+//            cartItem.setUnitPrice(product.getPrice());
+//        }
+//        else {
+//            cartItem.setQuantity(cartItem.getQuantity() + cartItemsQuantity);
+//        }
+//        cart.getItems().add(cartItem);
+//        cartRepository.save(cart);
+//        return cartItemRepository.save(cartItem);
+        return null;
     }
 
     public Optional<CartItem> findById(String id) {
         return cartItemRepository.findById(id);
+    }
+
+    public List<CartItem> findByIdCart(String idItems) {
+        return cartItemRepository.findByIdCart(idItems);
     }
 }

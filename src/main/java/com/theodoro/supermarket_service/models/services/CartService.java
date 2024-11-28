@@ -4,6 +4,8 @@ import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.models.repositories.CartItemRepository;
 import com.theodoro.supermarket_service.models.repositories.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,8 +22,12 @@ public class CartService {
         this.cartItemRepository = cartItemRepository;
     }
 
-    public Cart create() {
-        return cartRepository.save(new Cart());
+    public Cart create(Cart cart) {
+        return cartRepository.save(cart);
+    }
+
+    public Page<Cart> findAll(Pageable page) {
+        return this.cartRepository.findAll(page);
     }
 
     public Optional<Cart> findById(String id) {
@@ -32,4 +38,5 @@ public class CartService {
         cartItemRepository.deleteAllByIdCart(cart.getId());
         cartRepository.delete(cart);
     }
+
 }

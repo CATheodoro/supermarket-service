@@ -1,8 +1,6 @@
 package com.theodoro.supermarket_service.domains.entities;
 
-import com.theodoro.supermarket_service.models.requests.CartItemRequest;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
 
 @Entity
 @Table(name = "CART_ITEM")
@@ -24,8 +22,8 @@ public class CartItem {
     public CartItem() {
     }
 
-    public CartItem(@Valid CartItemRequest cartItemRequest, Cart cart, Product product) {
-        this.quantity = cartItemRequest.getQuantity();
+    public CartItem(Integer cartItemsQuantity, Cart cart, Product product) {
+        this.quantity = cartItemsQuantity;
         this.unitPrice = product.getPrice();
         this.idProduct = product.getId();
         this.idCart = cart.getId();
