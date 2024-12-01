@@ -1,4 +1,4 @@
-package com.theodoro.supermarket_service.models.repositories;
+package com.theodoro.supermarket_service.api.rest.models.repositories;
 
 import com.theodoro.supermarket_service.domains.entities.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;

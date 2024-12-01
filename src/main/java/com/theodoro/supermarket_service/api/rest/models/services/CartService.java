@@ -1,8 +1,8 @@
-package com.theodoro.supermarket_service.models.services;
+package com.theodoro.supermarket_service.api.rest.models.services;
 
 import com.theodoro.supermarket_service.domains.entities.Cart;
-import com.theodoro.supermarket_service.models.repositories.CartItemRepository;
-import com.theodoro.supermarket_service.models.repositories.CartRepository;
+import com.theodoro.supermarket_service.api.rest.models.repositories.CartItemRepository;
+import com.theodoro.supermarket_service.api.rest.models.repositories.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -35,7 +35,7 @@ public class CartService {
     }
 
     public void clearCart(Cart cart) {
-        cartItemRepository.deleteAllByIdCart(cart.getId());
+        cartItemRepository.deleteAllByCart(cart);
         cartRepository.delete(cart);
     }
 

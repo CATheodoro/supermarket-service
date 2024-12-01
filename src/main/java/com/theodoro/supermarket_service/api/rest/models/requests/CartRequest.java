@@ -1,6 +1,7 @@
-package com.theodoro.supermarket_service.models.requests;
+package com.theodoro.supermarket_service.api.rest.models.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.theodoro.supermarket_service.domains.entities.CartItem;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class CartRequest {
     private Integer totalPrice;
 
     @JsonProperty("items")
-    private List<String> items;
+    private List<CartItem> items;
 
     public Integer getTotalPrice() {
         return totalPrice;
@@ -20,11 +21,11 @@ public class CartRequest {
         this.totalPrice = totalPrice;
     }
 
-    public List<String> getItems() {
+    public List<CartItem> getItems() {
         return items;
     }
 
-    public void setItems(List<String> items) {
+    public void setItems(List<CartItem> items) {
         this.items = items;
     }
 }

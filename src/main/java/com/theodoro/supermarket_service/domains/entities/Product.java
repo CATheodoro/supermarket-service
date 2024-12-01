@@ -2,6 +2,8 @@ package com.theodoro.supermarket_service.domains.entities;
 
 import jakarta.persistence.*;
 
+import java.time.ZonedDateTime;
+
 @Entity
 @Table(name = "PRODUCT")
 public class Product {
@@ -14,6 +16,16 @@ public class Product {
     private String name;
     @Column(name = "PRICE")
     private Integer price;
+    @Column(name = "STOCK_QUANTITY")
+    private Integer stockQuantity;
+
+    @Column(name = "CREATION_DATE", nullable = false, updatable = false)
+    private ZonedDateTime creationDate;
+
+    @PrePersist
+    private void prePersists() {
+        this.creationDate = ZonedDateTime.now();
+    }
 
     public String getId() {
         return id;
@@ -37,5 +49,13 @@ public class Product {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Integer getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 }

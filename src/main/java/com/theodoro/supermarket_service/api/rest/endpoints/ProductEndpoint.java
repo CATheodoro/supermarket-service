@@ -3,9 +3,9 @@ package com.theodoro.supermarket_service.api.rest.endpoints;
 import com.theodoro.supermarket_service.api.rest.assemblers.ProductAssembler;
 import com.theodoro.supermarket_service.domains.entities.Product;
 import com.theodoro.supermarket_service.domains.exceptions.NotFoundException;
-import com.theodoro.supermarket_service.models.requests.ProductRequest;
-import com.theodoro.supermarket_service.models.responses.ProductResponse;
-import com.theodoro.supermarket_service.models.services.ProductService;
+import com.theodoro.supermarket_service.api.rest.models.requests.ProductRequest;
+import com.theodoro.supermarket_service.api.rest.models.responses.ProductResponse;
+import com.theodoro.supermarket_service.api.rest.models.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,7 +44,6 @@ public class ProductEndpoint {
         Page<Product> products = this.productService.findAll(page);
         return ResponseEntity.ok(productAssembler.toPageModel(products));
     }
-
 
     @GetMapping(PRODUCT_SELF_PATH)
     public ResponseEntity<ProductResponse> findById(@PathVariable("id") final String id) {

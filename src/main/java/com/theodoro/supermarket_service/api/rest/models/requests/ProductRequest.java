@@ -1,4 +1,4 @@
-package com.theodoro.supermarket_service.models.requests;
+package com.theodoro.supermarket_service.api.rest.models.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;

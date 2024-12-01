@@ -5,11 +5,11 @@ import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
 import com.theodoro.supermarket_service.domains.entities.Product;
 import com.theodoro.supermarket_service.domains.exceptions.NotFoundException;
-import com.theodoro.supermarket_service.models.requests.CartItemRequest;
-import com.theodoro.supermarket_service.models.responses.CartItemResponse;
-import com.theodoro.supermarket_service.models.services.CartItemService;
-import com.theodoro.supermarket_service.models.services.CartService;
-import com.theodoro.supermarket_service.models.services.ProductService;
+import com.theodoro.supermarket_service.api.rest.models.requests.CartItemRequest;
+import com.theodoro.supermarket_service.api.rest.models.responses.CartItemResponse;
+import com.theodoro.supermarket_service.api.rest.models.services.CartItemService;
+import com.theodoro.supermarket_service.api.rest.models.services.CartService;
+import com.theodoro.supermarket_service.api.rest.models.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -42,14 +42,20 @@ public class CartItemEndpoint {
     public ResponseEntity<URI> addItemToCart(@RequestBody @Valid CartItemRequest cartItemRequest) {
         Cart cart = this.cartService.findById(cartItemRequest.getIdCart()).orElseThrow(() -> new NotFoundException(CART_ID_NOT_FOUND));
         Product product = this.productService.findById(cartItemRequest.getIdProduct()).orElseThrow(() -> new NotFoundException(PRODUCT_ID_NOT_FOUND));
+        CartItem cartItem = cart.getItems()
+                .stream()
+                .filter(item -> item.getIdProduct().equals(product.getId()))
+                .findFirst().orElse(new CartItem());
 
-        CartItem cartItem = cartItemService.addItemToCart(cart, product, cartItemRequest.getQuantity());
+        cartItem = cartItemService.addItemToCart(cart, product, cartItem, cartItemRequest.getQuantity());
         return ResponseEntity.created(cartItemAssembler.buildSelfLink(cartItem.getId()).toUri()).build();
     }
 
     @GetMapping(CART_ITEM_SELF_PATH)
     public ResponseEntity<CartItemResponse> findById(@PathVariable("id") final String id) {
         CartItem cartItem = cartItemService.findById(id).orElseThrow(() -> new NotFoundException(CART_ITEM_ID_NOT_FOUND));
-        return ResponseEntity.ok(cartItemAssembler.toModel(cartItem));
+        Product product = productService.findById(cartItem.getIdProduct()).orElseThrow(() -> new NotFoundException(PRODUCT_ID_NOT_FOUND));
+
+        return ResponseEntity.ok(cartItemAssembler.toModel(cartItem, product));
     }
 }

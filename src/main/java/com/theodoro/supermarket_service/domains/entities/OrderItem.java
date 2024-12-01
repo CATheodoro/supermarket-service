@@ -2,13 +2,16 @@ package com.theodoro.supermarket_service.domains.entities;
 
 import jakarta.persistence.*;
 
+import java.time.ZonedDateTime;
+
 @Entity
-@Table(name = "CART_ITEM")
-public class CartItem {
+@Table(name = "ORDER_ITEM")
+public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private String id;
+
     @Column(name = "QUANTITY")
     private Integer quantity;
     @Column(name = "UNIT_PRICE")
@@ -18,17 +21,15 @@ public class CartItem {
     private String idProduct;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id", nullable = false)
-    private Cart cart;
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
-    public CartItem() {
-    }
+    @Column(name = "CREATION_DATE", nullable = false, updatable = false)
+    private ZonedDateTime creationDate;
 
-    public CartItem(Integer cartItemsQuantity, Cart cart, Product product) {
-        this.quantity = cartItemsQuantity;
-        this.unitPrice = product.getPrice();
-        this.idProduct = product.getId();
-        this.cart = cart;
+    @PrePersist
+    private void prePersists() {
+        this.creationDate = ZonedDateTime.now();
     }
 
     public String getId() {
@@ -63,11 +64,11 @@ public class CartItem {
         this.idProduct = idProduct;
     }
 
-    public Cart getCart() {
-        return cart;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

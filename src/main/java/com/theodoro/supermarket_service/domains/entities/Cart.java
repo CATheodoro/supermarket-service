@@ -15,8 +15,8 @@ public class Cart {
     @Column(name = "TOTAL_PRICE")
     private Integer totalPrice;
 
-    @Column(name = "ITEMS")
-    private List<String> items = new ArrayList<>();
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> items = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -34,11 +34,11 @@ public class Cart {
         this.totalPrice = totalPrice;
     }
 
-    public List<String> getItems() {
+    public List<CartItem> getItems() {
         return items;
     }
 
-    public void setItems(List<String> items) {
+    public void setItems(List<CartItem> items) {
         this.items = items;
     }
 }

@@ -13,7 +13,9 @@ public enum ExceptionMessagesEnum {
     //404
     PRODUCT_ID_NOT_FOUND(404001, NOT_FOUND, "Product not found for id informed."),
     CART_ID_NOT_FOUND(404002, NOT_FOUND, "Cart not found for id informed."),
-    CART_ITEM_ID_NOT_FOUND(404003, NOT_FOUND, "Cart item not found for id informed.");
+    CART_ITEM_ID_NOT_FOUND(404003, NOT_FOUND, "Cart item not found for id informed."),
+    ORDER_ID_NOT_FOUND(404004, NOT_FOUND, "Order not found for id informed."),
+    ORDER_ITEM_ID_NOT_FOUND(404005, NOT_FOUND, "Order item not found for id informed.");
 
 
     private final int code;

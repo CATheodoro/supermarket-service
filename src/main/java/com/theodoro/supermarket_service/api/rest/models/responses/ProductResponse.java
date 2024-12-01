@@ -1,4 +1,4 @@
-package com.theodoro.supermarket_service.models.responses;
+package com.theodoro.supermarket_service.api.rest.models.responses;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

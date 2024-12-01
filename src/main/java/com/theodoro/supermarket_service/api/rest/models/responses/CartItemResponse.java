@@ -1,9 +1,11 @@
-package com.theodoro.supermarket_service.models.responses;
+package com.theodoro.supermarket_service.api.rest.models.responses;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
+import com.theodoro.supermarket_service.domains.entities.Product;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
@@ -12,7 +14,7 @@ import org.springframework.hateoas.server.core.Relation;
         "id",
         "quantity",
         "unitPrice",
-        "idProduct",
+        "Product",
         "idCart"
 })
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -27,6 +29,10 @@ public class CartItemResponse extends RepresentationModel<CartItemResponse> {
 
     @JsonProperty("idProduct")
     private String idProduct;
+
+    @JsonProperty("product")
+    private ProductResponse productResponse;
+
     @JsonProperty("idCart")
     private String idCart;
 
@@ -35,13 +41,21 @@ public class CartItemResponse extends RepresentationModel<CartItemResponse> {
         this.quantity = cartItem.getQuantity();
         this.unitPrice = cartItem.getUnitPrice();
         this.idProduct = cartItem.getIdProduct();
-        this.idCart = cartItem.getIdCart();
+        this.idCart = cartItem.getCart().getId();
     }
 
-    public CartItemResponse(String idProduct, String idCart, Integer quantity, Integer unitPrice) {
+    public CartItemResponse(String idProduct, Cart cart, Integer quantity, Integer unitPrice) {
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.idProduct = idProduct;
-        this.idCart = idCart;
+        this.idCart = cart.getId();
+    }
+
+    public CartItemResponse(CartItem cartItem, ProductResponse productResponse) {
+        this.id = cartItem.getId();
+        this.quantity = cartItem.getQuantity();
+        this.unitPrice = cartItem.getUnitPrice();
+        this.productResponse = productResponse;
+        this.idCart = cartItem.getCart().getId();
     }
 }

@@ -1,4 +1,4 @@
-package com.theodoro.supermarket_service.models.errors;
+package com.theodoro.supermarket_service.api.rest.models.errors;
 
 import java.util.LinkedList;
 import java.util.List;
