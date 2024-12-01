@@ -1,42 +1,30 @@
-package com.theodoro.supermarket_service.domains.entities;
+package com.theodoro.supermarket_service.api.rest.models.requests;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 
-@Entity
-@Table(name = "PROMOTION")
-public class Promotion {
+public class PromotionRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "ID")
-    private String id;
-    @Column(name = "CODE")
+    @NotBlank(message = "Code is mandatory")
+    @JsonProperty("code")
     private String code;
-    @Column(name = "DESCRIPTION")
+    @NotBlank(message = "Description is mandatory")
+    @JsonProperty("description")
     private String description;
-    @Column(name = "PRODUCT")
+    @NotBlank(message = "Product id is mandatory")
+    @JsonProperty("idProduct")
     private String idProduct;
-    @Column(name = "ACTIVE")
-    private Boolean active;
 
-    @Column(name = "REQUIRED_QUANTITY")
-    private Integer requiredQuantity;   //BUY_X_GET_Y_FREE || QTY_BASED_PRICE_OVERRIDE
-    @Column(name = "PRICE")
-    private Integer price;              //QTY_BASED_PRICE_OVERRIDE
+    @JsonProperty("requiredQuantity")
+    private Integer requiredQuantity;
+    @JsonProperty("price")
+    private Integer price;
 
-    @Column(name = "AMOUNT")
-    private Float amount;             // FLAT_PERCENT
+    @JsonProperty("amount")
+    private Float amount;
 
-    @Column(name = "FREE_QUANTITY")
-    private Integer freeQuantity;       //BUY_X_GET_Y_FREE
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    @JsonProperty("freeQuantity")
+    private Integer freeQuantity;
 
     public String getCode() {
         return code;
@@ -60,14 +48,6 @@ public class Promotion {
 
     public void setIdProduct(String idProduct) {
         this.idProduct = idProduct;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
     }
 
     public Integer getRequiredQuantity() {

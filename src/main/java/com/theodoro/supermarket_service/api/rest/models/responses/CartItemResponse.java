@@ -44,13 +44,6 @@ public class CartItemResponse extends RepresentationModel<CartItemResponse> {
         this.idCart = cartItem.getCart().getId();
     }
 
-    public CartItemResponse(String idProduct, Cart cart, Integer quantity, Integer unitPrice) {
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.idProduct = idProduct;
-        this.idCart = cart.getId();
-    }
-
     public CartItemResponse(CartItem cartItem, ProductResponse productResponse) {
         this.id = cartItem.getId();
         this.quantity = cartItem.getQuantity();
