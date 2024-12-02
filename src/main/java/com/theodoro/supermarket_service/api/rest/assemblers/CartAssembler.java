@@ -69,10 +69,6 @@ public class CartAssembler extends RepresentationModelAssemblerSupport<Cart, Car
         return cart;
     }
 
-    public Page<CartResponse> toPageModel(Page<Cart> carts) {
-        return carts.map(this::toModel);
-    }
-
     public Page<CartResponse> toPageModel(Page<Cart> carts, List<Product> products) {
         return carts.map(cart -> this.toModel(cart, products));
     }

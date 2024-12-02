@@ -13,7 +13,6 @@ public class CartItem {
     private Integer quantity;
     @Column(name = "UNIT_PRICE")
     private Integer unitPrice;
-
     @Column(name = "ID_PRODUCT")
     private String idProduct;
 

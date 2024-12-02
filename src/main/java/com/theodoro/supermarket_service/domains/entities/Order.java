@@ -13,20 +13,31 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private String id;
-    @Column(name = "CREATION_DATE", nullable = false, updatable = false)
-    private ZonedDateTime creationDate;
     @Column(name = "TOTAL_PRICE")
     private Integer totalPrice;
+    @Column(name = "DISCOUNT")
+    private Integer discount;
+    @Column(name = "FINAL_PRICE")
+    private Integer finalPrice;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
 
+    @Column(name = "CREATION_DATE", nullable = false, updatable = false)
+    private ZonedDateTime creationDate;
 
     public Order() {
     }
 
     public Order(Cart cart) {
         this.totalPrice = cart.getTotalPrice();
+        this.discount = cart.getDiscount();
+        this.finalPrice = cart.getFinalPrice();
+    }
+
+    @PrePersist
+    private void prePersists() {
+        this.creationDate = ZonedDateTime.now();
     }
 
     public String getId() {
@@ -59,5 +70,21 @@ public class Order {
 
     public void setItems(List<OrderItem> items) {
         this.items = items;
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    public Integer getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(Integer finalPrice) {
+        this.finalPrice = finalPrice;
     }
 }

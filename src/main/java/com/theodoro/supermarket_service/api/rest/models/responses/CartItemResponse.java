@@ -24,29 +24,29 @@ public class CartItemResponse extends RepresentationModel<CartItemResponse> {
     private Integer quantity;
     @JsonProperty("unitPrice")
     private Integer unitPrice;
-
     @JsonProperty("idProduct")
     private String idProduct;
+    @JsonProperty("idCart")
+    private String idCart;
 
     @JsonProperty("product")
     private ProductResponse productResponse;
 
-    @JsonProperty("idCart")
-    private String idCart;
 
     public CartItemResponse(CartItem cartItem) {
         this.id = cartItem.getId();
         this.quantity = cartItem.getQuantity();
         this.unitPrice = cartItem.getUnitPrice();
-        this.idProduct = cartItem.getIdProduct();
         this.idCart = cartItem.getCart().getId();
+        this.idProduct = cartItem.getIdProduct();
     }
 
     public CartItemResponse(CartItem cartItem, ProductResponse productResponse) {
         this.id = cartItem.getId();
         this.quantity = cartItem.getQuantity();
         this.unitPrice = cartItem.getUnitPrice();
-        this.productResponse = productResponse;
         this.idCart = cartItem.getCart().getId();
+        this.productResponse = productResponse;
+
     }
 }

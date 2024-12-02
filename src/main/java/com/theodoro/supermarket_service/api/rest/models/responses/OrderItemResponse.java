@@ -7,11 +7,16 @@ import com.theodoro.supermarket_service.domains.entities.OrderItem;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
+import java.time.ZonedDateTime;
+
 @JsonPropertyOrder({
         "id",
         "quantity",
         "unitPrice",
-        "idProduct"
+        "Product",
+        "idOrder",
+        "product",
+        "creationDate"
 })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "OrderItem", collectionRelation = "OrderItems")
@@ -22,15 +27,24 @@ public class OrderItemResponse extends RepresentationModel<OrderItemResponse> {
     private Integer quantity;
     @JsonProperty("unitPrice")
     private Integer unitPrice;
-
     @JsonProperty("idProduct")
     private String idProduct;
+    @JsonProperty("idCart")
+    private String idOrder;
+
+    @JsonProperty("product")
+    private ProductResponse productResponse;
+
+    @JsonProperty("creationDate")
+    private ZonedDateTime creationDate;
 
     public OrderItemResponse(OrderItem orderItem) {
         this.id = orderItem.getId();
         this.quantity = orderItem.getQuantity();
         this.unitPrice = orderItem.getUnitPrice();
+        this.idOrder = orderItem.getOrder().getId();
         this.idProduct = orderItem.getIdProduct();
+        this.creationDate = orderItem.getCreationDate();
     }
 
     public String getId() {
@@ -63,5 +77,29 @@ public class OrderItemResponse extends RepresentationModel<OrderItemResponse> {
 
     public void setIdProduct(String idProduct) {
         this.idProduct = idProduct;
+    }
+
+    public String getIdOrder() {
+        return idOrder;
+    }
+
+    public void setIdOrder(String idOrder) {
+        this.idOrder = idOrder;
+    }
+
+    public ProductResponse getProductResponse() {
+        return productResponse;
+    }
+
+    public void setProductResponse(ProductResponse productResponse) {
+        this.productResponse = productResponse;
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(ZonedDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 }

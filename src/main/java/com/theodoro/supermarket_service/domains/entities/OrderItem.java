@@ -11,12 +11,10 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private String id;
-
     @Column(name = "QUANTITY")
     private Integer quantity;
     @Column(name = "UNIT_PRICE")
     private Integer unitPrice;
-
     @Column(name = "ID_PRODUCT")
     private String idProduct;
 
@@ -70,5 +68,13 @@ public class OrderItem {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(ZonedDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 }

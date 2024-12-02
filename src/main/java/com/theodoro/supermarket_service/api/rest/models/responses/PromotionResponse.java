@@ -36,10 +36,8 @@ public class PromotionResponse extends RepresentationModel<PromotionResponse> {
     private Integer requiredQuantity;
     @JsonProperty("price")
     private Integer price;
-
     @JsonProperty("amount")
     private Float amount;
-
     @JsonProperty("freeQuantity")
     private Integer freeQuantity;
 

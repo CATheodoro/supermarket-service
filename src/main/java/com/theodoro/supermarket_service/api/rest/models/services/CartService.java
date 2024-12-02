@@ -38,5 +38,4 @@ public class CartService {
         cartItemRepository.deleteAllByCart(cart);
         cartRepository.delete(cart);
     }
-
 }

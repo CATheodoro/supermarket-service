@@ -11,7 +11,10 @@ import java.util.List;
 
 @JsonPropertyOrder({
         "id",
-        "totalPrice"
+        "totalPrice",
+        "discount",
+        "finalPrice",
+        "cartItems"
 })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "Cart", collectionRelation = "Carts")
@@ -20,12 +23,18 @@ public class CartResponse extends RepresentationModel<CartResponse> {
     private String id;
     @JsonProperty("totalPrice")
     private Integer totalPrice;
+    @JsonProperty("discount")
+    private Integer discount;
+    @JsonProperty("finalPrice")
+    private Integer finalPrice;
     @JsonProperty("cartItems")
     private List<CartItemResponse> cartItems;
 
     public CartResponse(Cart cart, List<CartItemResponse> cartItemResponses) {
         this.id = cart.getId();
         this.totalPrice = cart.getTotalPrice();
+        this.discount = cart.getDiscount();
+        this.finalPrice = cart.getFinalPrice();
         this.cartItems = cartItemResponses;
     }
 
@@ -43,6 +52,22 @@ public class CartResponse extends RepresentationModel<CartResponse> {
 
     public void setTotalPrice(Integer totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    public Integer getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(Integer finalPrice) {
+        this.finalPrice = finalPrice;
     }
 
     public List<CartItemResponse> getCartItems() {
