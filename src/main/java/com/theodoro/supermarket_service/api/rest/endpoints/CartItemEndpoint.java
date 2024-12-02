@@ -45,9 +45,13 @@ public class CartItemEndpoint {
         CartItem cartItem = cart.getItems()
                 .stream()
                 .filter(item -> item.getIdProduct().equals(product.getId()))
-                .findFirst().orElse(new CartItem());
+                .findFirst()
+                .orElse(new CartItem(
+                        cart,
+                        product,
+                        cartItemRequest.getQuantity()));
 
-        cartItem = cartItemService.addItemToCart(cart, product, cartItem, cartItemRequest.getQuantity());
+        cartItem = cartItemService.addItemToCart(cart, cartItem, cartItemRequest.getQuantity());
         return ResponseEntity.created(cartItemAssembler.buildSelfLink(cartItem.getId()).toUri()).build();
     }
 

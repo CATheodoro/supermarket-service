@@ -8,7 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface PromotionRepository extends JpaRepository<Promotion, String> {
-    Optional<Promotion> findFirstByIdProduct(String idProduct);
-
-    Optional<Promotion> findFirstByIdProductAndActive(String idProduct, boolean b);
+    Optional<Promotion> findFirstByIdProductAndActive(String idProduct, boolean active);
 }

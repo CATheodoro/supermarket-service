@@ -24,11 +24,11 @@ public class CartItem {
     public CartItem() {
     }
 
-    public CartItem(Integer cartItemsQuantity, Cart cart, Product product) {
-        this.quantity = cartItemsQuantity;
-        this.unitPrice = product.getPrice();
-        this.idProduct = product.getId();
+    public CartItem(Cart cart, Product product, Integer cartItemsQuantity) {
         this.cart = cart;
+        this.idProduct = product.getId();
+        this.unitPrice = product.getPrice();
+        this.quantity = cartItemsQuantity;
     }
 
     public String getId() {
