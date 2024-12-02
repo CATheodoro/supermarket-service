@@ -1,7 +1,6 @@
 package com.theodoro.supermarket_service.api.rest.assemblers;
 
 import com.theodoro.supermarket_service.api.rest.endpoints.CartEndpoint;
-import com.theodoro.supermarket_service.api.rest.models.requests.CartRequest;
 import com.theodoro.supermarket_service.api.rest.models.responses.CartItemResponse;
 import com.theodoro.supermarket_service.api.rest.models.responses.CartResponse;
 import com.theodoro.supermarket_service.domains.entities.Cart;
@@ -60,13 +59,6 @@ public class CartAssembler extends RepresentationModelAssemblerSupport<Cart, Car
         final CartResponse cartResponse = new CartResponse(entity, cartItemResponses);
         cartResponse.add(this.buildSelfLink(entity.getId()));
         return cartResponse;
-    }
-
-    public Cart toEntity(CartRequest request) {
-        Cart cart = new Cart();
-        cart.setTotalPrice(request.getTotalPrice());
-        cart.setItems(request.getItems());
-        return cart;
     }
 
     public Page<CartResponse> toPageModel(Page<Cart> carts, List<Product> products) {

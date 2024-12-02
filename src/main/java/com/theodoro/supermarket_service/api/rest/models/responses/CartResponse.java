@@ -37,44 +37,4 @@ public class CartResponse extends RepresentationModel<CartResponse> {
         this.finalPrice = cart.getFinalPrice();
         this.cartItems = cartItemResponses;
     }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Integer getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Integer totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public Integer getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Integer discount) {
-        this.discount = discount;
-    }
-
-    public Integer getFinalPrice() {
-        return finalPrice;
-    }
-
-    public void setFinalPrice(Integer finalPrice) {
-        this.finalPrice = finalPrice;
-    }
-
-    public List<CartItemResponse> getCartItems() {
-        return cartItems;
-    }
-
-    public void setCartItems(List<CartItemResponse> cartItems) {
-        this.cartItems = cartItems;
-    }
 }

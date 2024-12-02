@@ -1,7 +1,6 @@
 package com.theodoro.supermarket_service.api.rest.endpoints;
 
 import com.theodoro.supermarket_service.api.rest.assemblers.CartAssembler;
-import com.theodoro.supermarket_service.api.rest.models.requests.CartRequest;
 import com.theodoro.supermarket_service.api.rest.models.responses.CartResponse;
 import com.theodoro.supermarket_service.api.rest.models.services.CartService;
 import com.theodoro.supermarket_service.api.rest.models.services.ProductService;
@@ -9,7 +8,6 @@ import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
 import com.theodoro.supermarket_service.domains.entities.Product;
 import com.theodoro.supermarket_service.domains.exceptions.NotFoundException;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -41,8 +39,8 @@ public class CartEndpoint {
     }
 
     @PostMapping(CART_RESOURCE_PATH)
-    public ResponseEntity<URI> create(@RequestBody @Valid CartRequest cartRequest){
-        Cart cart = this.cartService.create(cartAssembler.toEntity(cartRequest));
+    public ResponseEntity<URI> create(){
+        Cart cart = this.cartService.create(new Cart(0));
         return ResponseEntity.created(cartAssembler.buildSelfLink(cart.getId()).toUri()).build();
     }
 

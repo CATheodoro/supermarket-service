@@ -41,9 +41,6 @@ public class PromotionResponse extends RepresentationModel<PromotionResponse> {
     @JsonProperty("freeQuantity")
     private Integer freeQuantity;
 
-    public PromotionResponse() {
-    }
-
     public PromotionResponse(Promotion entity) {
         this.id = entity.getId();
         this.code = entity.getCode();
