@@ -1,16 +1,14 @@
 package com.theodoro.supermarket_service.api.rest.assemblers;
 
 import com.theodoro.supermarket_service.api.rest.endpoints.CartItemEndpoint;
+import com.theodoro.supermarket_service.api.rest.models.responses.CartItemResponse;
 import com.theodoro.supermarket_service.api.rest.models.responses.ProductResponse;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
-import com.theodoro.supermarket_service.api.rest.models.responses.CartItemResponse;
 import com.theodoro.supermarket_service.domains.entities.Product;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;

@@ -5,7 +5,6 @@ import com.theodoro.supermarket_service.api.rest.models.repositories.OrderReposi
 import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.Order;
 import com.theodoro.supermarket_service.domains.entities.OrderItem;
-import com.theodoro.supermarket_service.domains.entities.Product;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,11 +1,11 @@
 package com.theodoro.supermarket_service.api.rest.models.services;
 
+import com.theodoro.supermarket_service.api.rest.models.repositories.CartItemRepository;
+import com.theodoro.supermarket_service.api.rest.models.repositories.CartRepository;
 import com.theodoro.supermarket_service.api.rest.models.repositories.PromotionRepository;
 import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
 import com.theodoro.supermarket_service.domains.entities.Product;
-import com.theodoro.supermarket_service.api.rest.models.repositories.CartItemRepository;
-import com.theodoro.supermarket_service.api.rest.models.repositories.CartRepository;
 import com.theodoro.supermarket_service.domains.entities.Promotion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

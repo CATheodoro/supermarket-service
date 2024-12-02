@@ -3,9 +3,7 @@ package com.theodoro.supermarket_service.api.rest.models.responses;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
-import com.theodoro.supermarket_service.domains.entities.Product;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 

@@ -1,8 +1,8 @@
 package com.theodoro.supermarket_service.api.rest.models.services;
 
-import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.api.rest.models.repositories.CartItemRepository;
 import com.theodoro.supermarket_service.api.rest.models.repositories.CartRepository;
+import com.theodoro.supermarket_service.domains.entities.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,11 +1,11 @@
 package com.theodoro.supermarket_service.api.rest.endpoints;
 
 import com.theodoro.supermarket_service.api.rest.assemblers.ProductAssembler;
-import com.theodoro.supermarket_service.domains.entities.Product;
-import com.theodoro.supermarket_service.domains.exceptions.NotFoundException;
 import com.theodoro.supermarket_service.api.rest.models.requests.ProductRequest;
 import com.theodoro.supermarket_service.api.rest.models.responses.ProductResponse;
 import com.theodoro.supermarket_service.api.rest.models.services.ProductService;
+import com.theodoro.supermarket_service.domains.entities.Product;
+import com.theodoro.supermarket_service.domains.exceptions.NotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

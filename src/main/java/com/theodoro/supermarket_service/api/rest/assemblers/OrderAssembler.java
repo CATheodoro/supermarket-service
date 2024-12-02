@@ -1,10 +1,9 @@
 package com.theodoro.supermarket_service.api.rest.assemblers;
 
 import com.theodoro.supermarket_service.api.rest.endpoints.OrderEndpoint;
-import com.theodoro.supermarket_service.domains.entities.Order;
 import com.theodoro.supermarket_service.api.rest.models.responses.OrderItemResponse;
 import com.theodoro.supermarket_service.api.rest.models.responses.OrderResponse;
-import com.theodoro.supermarket_service.domains.entities.Product;
+import com.theodoro.supermarket_service.domains.entities.Order;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.lang.NonNull;

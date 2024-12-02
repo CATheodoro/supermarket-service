@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.theodoro.supermarket_service.domains.enumerations.ExceptionMessagesEnum.CART_CLEAR_SUCCESSFUL;
 import static com.theodoro.supermarket_service.domains.enumerations.ExceptionMessagesEnum.CART_ID_NOT_FOUND;

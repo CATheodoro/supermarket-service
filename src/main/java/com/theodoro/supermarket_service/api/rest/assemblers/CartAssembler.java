@@ -1,10 +1,10 @@
 package com.theodoro.supermarket_service.api.rest.assemblers;
 
 import com.theodoro.supermarket_service.api.rest.endpoints.CartEndpoint;
-import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.api.rest.models.requests.CartRequest;
 import com.theodoro.supermarket_service.api.rest.models.responses.CartItemResponse;
 import com.theodoro.supermarket_service.api.rest.models.responses.CartResponse;
+import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.hateoas.Link;

@@ -5,7 +5,6 @@ import com.theodoro.supermarket_service.api.rest.assemblers.OrderItemAssembler;
 import com.theodoro.supermarket_service.api.rest.models.responses.OrderResponse;
 import com.theodoro.supermarket_service.api.rest.models.services.CartService;
 import com.theodoro.supermarket_service.api.rest.models.services.OrderService;
-import com.theodoro.supermarket_service.api.rest.models.services.ProductService;
 import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.Order;
 import com.theodoro.supermarket_service.domains.entities.OrderItem;
