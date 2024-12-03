@@ -9,11 +9,11 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private String id;
-    @Column(name = "QUANTITY")
+    @Column(name = "QUANTITY", nullable = false)
     private Integer quantity;
-    @Column(name = "UNIT_PRICE")
+    @Column(name = "UNIT_PRICE", nullable = false)
     private Integer unitPrice;
-    @Column(name = "ID_PRODUCT")
+    @Column(name = "ID_PRODUCT", nullable = false)
     private String idProduct;
 
     @ManyToOne

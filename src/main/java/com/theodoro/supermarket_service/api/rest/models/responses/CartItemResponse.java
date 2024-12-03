@@ -12,8 +12,8 @@ import org.springframework.hateoas.server.core.Relation;
         "id",
         "quantity",
         "unitPrice",
-        "Product",
-        "idCart"
+        "idCart",
+        "Product"
 })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "CartItem", collectionRelation = "CartItems")
@@ -24,21 +24,17 @@ public class CartItemResponse extends RepresentationModel<CartItemResponse> {
     private Integer quantity;
     @JsonProperty("unitPrice")
     private Integer unitPrice;
-    @JsonProperty("idProduct")
-    private String idProduct;
     @JsonProperty("idCart")
     private String idCart;
 
     @JsonProperty("product")
     private ProductResponse productResponse;
 
-
     public CartItemResponse(CartItem cartItem) {
         this.id = cartItem.getId();
         this.quantity = cartItem.getQuantity();
         this.unitPrice = cartItem.getUnitPrice();
         this.idCart = cartItem.getCart().getId();
-        this.idProduct = cartItem.getIdProduct();
     }
 
     public CartItemResponse(CartItem cartItem, ProductResponse productResponse) {
@@ -47,6 +43,5 @@ public class CartItemResponse extends RepresentationModel<CartItemResponse> {
         this.unitPrice = cartItem.getUnitPrice();
         this.idCart = cartItem.getCart().getId();
         this.productResponse = productResponse;
-
     }
 }

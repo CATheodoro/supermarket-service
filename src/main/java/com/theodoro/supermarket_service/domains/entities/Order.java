@@ -13,11 +13,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private String id;
-    @Column(name = "TOTAL_PRICE")
+    @Column(name = "TOTAL_PRICE", nullable = false)
     private Integer totalPrice;
-    @Column(name = "DISCOUNT")
+    @Column(name = "DISCOUNT", nullable = false)
     private Integer discount;
-    @Column(name = "FINAL_PRICE")
+    @Column(name = "FINAL_PRICE", nullable = false)
     private Integer finalPrice;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)

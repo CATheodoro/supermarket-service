@@ -1,5 +1,6 @@
 package com.theodoro.supermarket_service.domains.entities;
 
+import com.theodoro.supermarket_service.api.rest.models.requests.ProductRequest;
 import jakarta.persistence.*;
 
 import java.time.ZonedDateTime;
@@ -12,15 +13,24 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private String id;
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
-    @Column(name = "PRICE")
+    @Column(name = "PRICE", nullable = false)
     private Integer price;
-    @Column(name = "STOCK_QUANTITY")
+    @Column(name = "STOCK_QUANTITY", nullable = false)
     private Integer stockQuantity;
 
     @Column(name = "CREATION_DATE", nullable = false, updatable = false)
     private ZonedDateTime creationDate;
+
+    public Product() {
+    }
+
+    public Product(ProductRequest request) {
+        this.name = request.getName();
+        this.price = request.getPrice();
+        this.stockQuantity = request.getStockQuantity();
+    }
 
     @PrePersist
     private void prePersists() {

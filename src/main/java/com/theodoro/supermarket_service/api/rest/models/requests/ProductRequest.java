@@ -2,6 +2,7 @@ package com.theodoro.supermarket_service.api.rest.models.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.lang.NonNull;
 
 public class ProductRequest {
@@ -9,10 +10,12 @@ public class ProductRequest {
     @NotBlank(message = "Product name is mandatory")
     @JsonProperty("name")
     private String name;
-
-    @NonNull
+    @NotNull
     @JsonProperty("price")
     private Integer price;
+    @NotNull
+    @JsonProperty("stockQuantity")
+    private Integer stockQuantity;
 
     public String getName() {
         return name;
@@ -28,5 +31,13 @@ public class ProductRequest {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Integer getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(Integer stockQuantity) {
+        this.stockQuantity = stockQuantity;
     }
 }

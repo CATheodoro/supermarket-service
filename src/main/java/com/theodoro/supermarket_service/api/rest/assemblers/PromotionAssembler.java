@@ -35,17 +35,7 @@ public class PromotionAssembler extends RepresentationModelAssemblerSupport<Prom
     }
 
     public Promotion toEntity(PromotionRequest request) {
-        Promotion promotion = new Promotion();
-
-        promotion.setCode(request.getCode());
-        promotion.setDescription(request.getDescription());
-        promotion.setIdProduct(request.getIdProduct());
-        promotion.setActive(true);
-        promotion.setRequiredQuantity(request.getRequiredQuantity());
-        promotion.setPrice(request.getPrice());
-        promotion.setAmount(request.getAmount());
-        promotion.setFreeQuantity(request.getFreeQuantity());
-        return promotion;
+        return new Promotion(request);
     }
 
     public List<PromotionResponse> toList(List<Promotion> promotions) {

@@ -13,7 +13,6 @@ import java.time.ZonedDateTime;
         "id",
         "quantity",
         "unitPrice",
-        "Product",
         "idOrder",
         "product",
         "creationDate"
@@ -27,8 +26,6 @@ public class OrderItemResponse extends RepresentationModel<OrderItemResponse> {
     private Integer quantity;
     @JsonProperty("unitPrice")
     private Integer unitPrice;
-    @JsonProperty("idProduct")
-    private String idProduct;
     @JsonProperty("idCart")
     private String idOrder;
 
@@ -43,7 +40,15 @@ public class OrderItemResponse extends RepresentationModel<OrderItemResponse> {
         this.quantity = orderItem.getQuantity();
         this.unitPrice = orderItem.getUnitPrice();
         this.idOrder = orderItem.getOrder().getId();
-        this.idProduct = orderItem.getIdProduct();
+        this.creationDate = orderItem.getCreationDate();
+    }
+
+    public OrderItemResponse(OrderItem orderItem, ProductResponse productResponse) {
+        this.id = orderItem.getId();
+        this.quantity = orderItem.getQuantity();
+        this.unitPrice = orderItem.getUnitPrice();
+        this.idOrder = orderItem.getOrder().getId();
+        this.productResponse = productResponse;
         this.creationDate = orderItem.getCreationDate();
     }
 }

@@ -5,9 +5,11 @@ import com.theodoro.supermarket_service.api.rest.assemblers.OrderItemAssembler;
 import com.theodoro.supermarket_service.api.rest.models.responses.OrderResponse;
 import com.theodoro.supermarket_service.api.rest.models.services.CartService;
 import com.theodoro.supermarket_service.api.rest.models.services.OrderService;
+import com.theodoro.supermarket_service.api.rest.models.services.ProductService;
 import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.Order;
 import com.theodoro.supermarket_service.domains.entities.OrderItem;
+import com.theodoro.supermarket_service.domains.entities.Product;
 import com.theodoro.supermarket_service.domains.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,15 +28,17 @@ public class OrderEndpoint {
 
     private final OrderService orderService;
     private final CartService cartService;
+    private final ProductService productService;
     private final OrderAssembler orderAssembler;
     private final OrderItemAssembler orderItemAssembler;
 
     @Autowired
-    public OrderEndpoint(OrderService orderService, CartService cartService, OrderAssembler orderAssembler, OrderItemAssembler orderItemAssembler) {
+    public OrderEndpoint(OrderService orderService, CartService cartService, OrderAssembler orderAssembler, OrderItemAssembler orderItemAssembler, ProductService productService) {
         this.orderService = orderService;
         this.cartService = cartService;
         this.orderAssembler = orderAssembler;
         this.orderItemAssembler = orderItemAssembler;
+        this.productService = productService;
     }
 
     @PostMapping(ORDER_RESOURCE_PATH)
@@ -49,6 +53,8 @@ public class OrderEndpoint {
     @GetMapping(ORDER_SELF_PATH)
     public ResponseEntity<OrderResponse> findById(@PathVariable("id") final String id){
         Order order = orderService.findById(id).orElseThrow(() -> new NotFoundException(ORDER_ID_NOT_FOUND));
-        return ResponseEntity.ok(orderAssembler.toModel(order));
+        List<Product> product = this.productService.findAllById(order.getItems().stream()
+                .map(OrderItem::getIdProduct).toList());
+        return ResponseEntity.ok(orderAssembler.toModel(order, product));
     }
 }

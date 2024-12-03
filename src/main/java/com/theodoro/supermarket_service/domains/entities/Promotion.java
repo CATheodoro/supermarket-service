@@ -1,5 +1,6 @@
 package com.theodoro.supermarket_service.domains.entities;
 
+import com.theodoro.supermarket_service.api.rest.models.requests.PromotionRequest;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,25 +11,37 @@ public class Promotion {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private String id;
-    @Column(name = "CODE")
+    @Column(name = "CODE", nullable = false)
     private String code;
-    @Column(name = "DESCRIPTION")
+    @Column(name = "DESCRIPTION", nullable = false)
     private String description;
-    @Column(name = "PRODUCT")
+    @Column(name = "PRODUCT", nullable = false)
     private String idProduct;
-    @Column(name = "ACTIVE")
+    @Column(name = "ACTIVE", nullable = false)
     private Boolean active;
 
     @Column(name = "REQUIRED_QUANTITY")
     private Integer requiredQuantity;   //BUY_X_GET_Y_FREE || QTY_BASED_PRICE_OVERRIDE
     @Column(name = "PRICE")
     private Integer price;              //QTY_BASED_PRICE_OVERRIDE
-
     @Column(name = "AMOUNT")
     private Float amount;             // FLAT_PERCENT
-
     @Column(name = "FREE_QUANTITY")
     private Integer freeQuantity;       //BUY_X_GET_Y_FREE
+
+    public Promotion() {
+    }
+
+    public Promotion(PromotionRequest request) {
+        this.code = request.getCode();
+        this.description = request.getDescription();
+        this.idProduct = request.getIdProduct();
+        this.active = request.getActive();
+        this.requiredQuantity = request.getRequiredQuantity();
+        this.price = request.getPrice();
+        this.amount = request.getAmount();
+        this.freeQuantity = request.getFreeQuantity();
+    }
 
     public String getId() {
         return id;

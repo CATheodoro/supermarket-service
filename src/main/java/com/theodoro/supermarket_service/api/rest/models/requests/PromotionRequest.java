@@ -14,6 +14,8 @@ public class PromotionRequest {
     @NotBlank(message = "Product id is mandatory")
     @JsonProperty("idProduct")
     private String idProduct;
+    @JsonProperty("active")
+    private Boolean active;
 
     @JsonProperty("requiredQuantity")
     private Integer requiredQuantity;
@@ -48,6 +50,14 @@ public class PromotionRequest {
 
     public void setIdProduct(String idProduct) {
         this.idProduct = idProduct;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Integer getRequiredQuantity() {

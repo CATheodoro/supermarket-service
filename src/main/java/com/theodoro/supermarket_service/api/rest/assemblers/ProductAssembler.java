@@ -33,10 +33,7 @@ public class ProductAssembler extends RepresentationModelAssemblerSupport<Produc
     }
 
     public Product toEntity(ProductRequest request) {
-        Product product = new Product();
-        product.setName(request.getName());
-        product.setPrice(request.getPrice());
-        return product;
+        return new Product(request);
     }
 
     public Page<ProductResponse> toPageModel(Page<Product> products) {
