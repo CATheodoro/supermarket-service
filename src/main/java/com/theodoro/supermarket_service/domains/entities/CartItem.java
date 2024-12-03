@@ -15,6 +15,8 @@ public class CartItem {
     private Integer unitPrice;
     @Column(name = "ID_PRODUCT", nullable = false)
     private String idProduct;
+    @Column(name = "ID_PROMOTION")
+    private String idPromotion;
 
     @ManyToOne
     @JoinColumn(name = "cart_id", nullable = false)
@@ -25,9 +27,9 @@ public class CartItem {
 
     public CartItem(Cart cart, Product product, Integer cartItemsQuantity) {
         this.cart = cart;
-        this.idProduct = product.getId();
-        this.unitPrice = product.getPrice();
         this.quantity = cartItemsQuantity;
+        this.unitPrice = product.getPrice();
+        this.idProduct = product.getId();
     }
 
     public String getId() {
@@ -68,5 +70,13 @@ public class CartItem {
 
     public void setCart(Cart cart) {
         this.cart = cart;
+    }
+
+    public String getIdPromotion() {
+        return idPromotion;
+    }
+
+    public void setIdPromotion(String idPromotion) {
+        this.idPromotion = idPromotion;
     }
 }

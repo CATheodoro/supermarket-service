@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.theodoro.supermarket_service.domains.entities.Promotion;
+import com.theodoro.supermarket_service.domains.enumerations.PromotionEnum;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
@@ -24,7 +25,7 @@ public class PromotionResponse extends RepresentationModel<PromotionResponse> {
     @JsonProperty("id")
     private String id;
     @JsonProperty("code")
-    private String code;
+    private PromotionEnum code;
     @JsonProperty("description")
     private String description;
     @JsonProperty("idProduct")

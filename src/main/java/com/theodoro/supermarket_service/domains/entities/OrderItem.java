@@ -17,6 +17,8 @@ public class OrderItem {
     private Integer unitPrice;
     @Column(name = "ID_PRODUCT", nullable = false)
     private String idProduct;
+    @Column(name = "ID_PROMOTION")
+    private String idPromotion;
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
@@ -32,6 +34,7 @@ public class OrderItem {
         this.quantity = cartItem.getQuantity();
         this.unitPrice = cartItem.getUnitPrice();
         this.idProduct = cartItem.getIdProduct();
+        this.idPromotion = cartItem.getIdPromotion();
     }
 
     @PrePersist
@@ -69,6 +72,14 @@ public class OrderItem {
 
     public void setIdProduct(String idProduct) {
         this.idProduct = idProduct;
+    }
+
+    public String getIdPromotion() {
+        return idPromotion;
+    }
+
+    public void setIdPromotion(String idPromotion) {
+        this.idPromotion = idPromotion;
     }
 
     public Order getOrder() {

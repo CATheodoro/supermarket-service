@@ -3,8 +3,10 @@ package com.theodoro.supermarket_service.api.rest.assemblers;
 import com.theodoro.supermarket_service.api.rest.endpoints.CartItemEndpoint;
 import com.theodoro.supermarket_service.api.rest.models.responses.CartItemResponse;
 import com.theodoro.supermarket_service.api.rest.models.responses.ProductResponse;
+import com.theodoro.supermarket_service.api.rest.models.responses.PromotionResponse;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
 import com.theodoro.supermarket_service.domains.entities.Product;
+import com.theodoro.supermarket_service.domains.entities.Promotion;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.lang.NonNull;
@@ -39,6 +41,7 @@ public class CartItemAssembler extends RepresentationModelAssemblerSupport<CartI
     public CartItemResponse toModel(@NonNull CartItem entity, @NonNull Product product) {
         final ProductResponse productResponse = productAssembler.toModel(product);
         final CartItemResponse cartItemResponse = new CartItemResponse(entity, productResponse);
+
         cartItemResponse.add(this.buildSelfLink(entity.getId()));
 
         return cartItemResponse;

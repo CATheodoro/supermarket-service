@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.theodoro.supermarket_service.domains.enumerations.PromotionEnum.*;
+
 @Service
 public class CalculateDiscount {
 
@@ -17,14 +19,16 @@ public class CalculateDiscount {
         this.promotionRepository = promotionRepository;
     }
 
-    public void calculatePromotionDiscount(Cart cart) {
+    public void calculatePromotionDiscount(Cart cart, CartItem cartItem) {
         float totalDiscount = 0f;
         int totalPrice = 0;
 
+        cart.getItems().add(cartItem);
         for (CartItem item : cart.getItems()) {
-            Optional<Promotion> promotionOpt = promotionRepository.findFirstByIdProductAndActive(item.getIdProduct(), true);
             totalPrice += item.getUnitPrice() * item.getQuantity();
+            Optional<Promotion> promotionOpt = promotionRepository.findFirstByIdProductAndActive(item.getIdProduct(), true);
             if (promotionOpt.isPresent()) {
+                cartItem.setIdPromotion(promotionOpt.get().getId());
                 totalDiscount += this.getDiscount(item, promotionOpt.get(), totalPrice);
             }
         }
@@ -34,13 +38,13 @@ public class CalculateDiscount {
     }
 
     private float getDiscount(CartItem item, Promotion promotion, int totalPrice) {
-        if (promotion.getAmount() != null) {
+        if (promotion.getCode().equals(FLAT_PERCENT)) {
             return this.calculatePercentageDiscount(totalPrice, promotion.getAmount());
         }
-        if (promotion.getFreeQuantity() != null && promotion.getRequiredQuantity() != null){
+        if (promotion.getCode().equals(BUY_X_GET_Y_FREE)){
             return this.calculateFreeQuantityDiscount(item.getQuantity(), promotion.getAmount(), promotion.getFreeQuantity());
         }
-        if (promotion.getPrice() != null && promotion.getRequiredQuantity() != null){
+        if (promotion.getCode().equals(QTY_BASED_PRICE_OVERRIDE)){
             return this.calculateQuantityBasedPriceOverride(item.getQuantity(), promotion.getRequiredQuantity(), promotion.getPrice(), item.getUnitPrice());
         }
         return 0;

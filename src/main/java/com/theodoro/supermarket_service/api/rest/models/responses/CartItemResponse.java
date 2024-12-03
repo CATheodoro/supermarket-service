@@ -13,6 +13,7 @@ import org.springframework.hateoas.server.core.Relation;
         "quantity",
         "unitPrice",
         "idCart",
+        "promotionResponse",
         "Product"
 })
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -27,6 +28,8 @@ public class CartItemResponse extends RepresentationModel<CartItemResponse> {
     @JsonProperty("idCart")
     private String idCart;
 
+    @JsonProperty("promotionResponse")
+    private PromotionResponse promotionResponse;
     @JsonProperty("product")
     private ProductResponse productResponse;
 

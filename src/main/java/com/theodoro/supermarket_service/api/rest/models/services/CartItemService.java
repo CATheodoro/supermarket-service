@@ -28,9 +28,8 @@ public class CartItemService {
             cartItem.setQuantity(cartItem.getQuantity() + cartItemsQuantity);
         }
 
-        this.calculateDiscount.calculatePromotionDiscount(cart);
+        this.calculateDiscount.calculatePromotionDiscount(cart, cartItem);
 
-        cart.getItems().add(cartItem);
         cartItem = cartItemRepository.save(cartItem);
         cartRepository.save(cart);
 

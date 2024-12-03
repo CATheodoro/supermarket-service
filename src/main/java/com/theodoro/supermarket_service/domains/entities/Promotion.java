@@ -1,6 +1,7 @@
 package com.theodoro.supermarket_service.domains.entities;
 
 import com.theodoro.supermarket_service.api.rest.models.requests.PromotionRequest;
+import com.theodoro.supermarket_service.domains.enumerations.PromotionEnum;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,8 +12,8 @@ public class Promotion {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private String id;
-    @Column(name = "CODE", nullable = false)
-    private String code;
+    @Column(name = "CODE")
+    private PromotionEnum code;
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
     @Column(name = "PRODUCT", nullable = false)
@@ -25,7 +26,7 @@ public class Promotion {
     @Column(name = "PRICE")
     private Integer price;              //QTY_BASED_PRICE_OVERRIDE
     @Column(name = "AMOUNT")
-    private Float amount;             // FLAT_PERCENT
+    private Float amount;               // FLAT_PERCENT
     @Column(name = "FREE_QUANTITY")
     private Integer freeQuantity;       //BUY_X_GET_Y_FREE
 
@@ -36,7 +37,7 @@ public class Promotion {
         this.code = request.getCode();
         this.description = request.getDescription();
         this.idProduct = request.getIdProduct();
-        this.active = request.getActive();
+        this.active = true;
         this.requiredQuantity = request.getRequiredQuantity();
         this.price = request.getPrice();
         this.amount = request.getAmount();
@@ -51,11 +52,11 @@ public class Promotion {
         this.id = id;
     }
 
-    public String getCode() {
+    public PromotionEnum getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(PromotionEnum code) {
         this.code = code;
     }
 

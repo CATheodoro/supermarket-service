@@ -6,9 +6,11 @@ import com.theodoro.supermarket_service.api.rest.models.responses.CartItemRespon
 import com.theodoro.supermarket_service.api.rest.models.services.CartItemService;
 import com.theodoro.supermarket_service.api.rest.models.services.CartService;
 import com.theodoro.supermarket_service.api.rest.models.services.ProductService;
+import com.theodoro.supermarket_service.api.rest.models.services.PromotionService;
 import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
 import com.theodoro.supermarket_service.domains.entities.Product;
+import com.theodoro.supermarket_service.domains.entities.Promotion;
 import com.theodoro.supermarket_service.domains.exceptions.NotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +31,15 @@ public class CartItemEndpoint {
     private final CartService cartService;
     private final ProductService productService;
     private final CartItemAssembler cartItemAssembler;
+    private final PromotionService promotionService;
 
     @Autowired
-    public CartItemEndpoint(CartItemService cartItemService, CartService cartService, ProductService productService, CartItemAssembler cartItemAssembler) {
+    public CartItemEndpoint(CartItemService cartItemService, CartService cartService, ProductService productService, CartItemAssembler cartItemAssembler, PromotionService promotionService) {
         this.cartItemService = cartItemService;
         this.cartService = cartService;
         this.productService = productService;
         this.cartItemAssembler = cartItemAssembler;
+        this.promotionService = promotionService;
     }
 
     @PostMapping(CART_ITEM_ADD_PATH)

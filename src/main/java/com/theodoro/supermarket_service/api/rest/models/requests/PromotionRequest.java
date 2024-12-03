@@ -1,21 +1,21 @@
 package com.theodoro.supermarket_service.api.rest.models.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.theodoro.supermarket_service.domains.enumerations.PromotionEnum;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class PromotionRequest {
 
-    @NotBlank(message = "Code is mandatory")
+    @NotNull(message = "Code is mandatory")
     @JsonProperty("code")
-    private String code;
+    private PromotionEnum code;
     @NotBlank(message = "Description is mandatory")
     @JsonProperty("description")
     private String description;
     @NotBlank(message = "Product id is mandatory")
     @JsonProperty("idProduct")
     private String idProduct;
-    @JsonProperty("active")
-    private Boolean active;
 
     @JsonProperty("requiredQuantity")
     private Integer requiredQuantity;
@@ -28,11 +28,11 @@ public class PromotionRequest {
     @JsonProperty("freeQuantity")
     private Integer freeQuantity;
 
-    public String getCode() {
+    public PromotionEnum getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(PromotionEnum code) {
         this.code = code;
     }
 
@@ -50,14 +50,6 @@ public class PromotionRequest {
 
     public void setIdProduct(String idProduct) {
         this.idProduct = idProduct;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
     }
 
     public Integer getRequiredQuantity() {

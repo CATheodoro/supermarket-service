@@ -2,13 +2,15 @@ package com.theodoro.supermarket_service.domains.enumerations;
 
 import org.springframework.http.HttpStatus;
 
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.*;
 
 public enum ExceptionMessagesEnum {
 
     //200
     CART_CLEAR_SUCCESSFUL(200001, OK, "Clear cart successfully."),
+
+    //400
+    PRODUCT_NOT_ENOUGH_STOCK_BAD_REQUEST(400001, BAD_REQUEST, "Product not enough stock."),
 
     //404
     PRODUCT_ID_NOT_FOUND(404001, NOT_FOUND, "Product not found for id informed."),

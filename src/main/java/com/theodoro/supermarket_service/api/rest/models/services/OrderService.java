@@ -17,19 +17,23 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
+    private final ProductService productService;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
+    public OrderService(OrderRepository orderRepository, OrderItemRepository orderItemRepository, ProductService productService) {
         this.orderRepository = orderRepository;
         this.orderItemRepository = orderItemRepository;
+        this.productService = productService;
     }
 
     @Transactional
     public Order buy(Cart cart, List<OrderItem> orderItems) {
-        Order order = new Order(cart);
-        orderRepository.save(order);
+        Order order = orderRepository.save(new Order(cart));
 
-        orderItems.forEach(orderItem -> orderItem.setOrder(order));
+        orderItems.forEach(orderItem ->{
+            orderItem.setOrder(order);
+            productService.reduceStock(orderItem.getIdProduct(), orderItem.getQuantity());
+        });
 
         orderItems = orderItemRepository.saveAll(orderItems);
         order.getItems().addAll(orderItems);
