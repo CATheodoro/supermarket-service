@@ -4,6 +4,8 @@ import com.theodoro.supermarket_service.api.rest.models.requests.PromotionReques
 import com.theodoro.supermarket_service.domains.enumerations.PromotionEnum;
 import jakarta.persistence.*;
 
+import java.time.ZonedDateTime;
+
 @Entity
 @Table(name = "PROMOTION")
 public class Promotion {
@@ -13,10 +15,11 @@ public class Promotion {
     @Column(name = "ID")
     private String id;
     @Column(name = "CODE")
+    @Enumerated(EnumType.STRING)
     private PromotionEnum code;
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
-    @Column(name = "PRODUCT", nullable = false)
+    @Column(name = "ID_PRODUCT", nullable = false)
     private String idProduct;
     @Column(name = "ACTIVE", nullable = false)
     private Boolean active;
@@ -30,6 +33,9 @@ public class Promotion {
     @Column(name = "FREE_QUANTITY")
     private Integer freeQuantity;       //BUY_X_GET_Y_FREE
 
+    @Column(name = "CREATION_DATE", nullable = false, updatable = false)
+    private ZonedDateTime creationDate;
+
     public Promotion() {
     }
 
@@ -42,6 +48,11 @@ public class Promotion {
         this.price = request.getPrice();
         this.amount = request.getAmount();
         this.freeQuantity = request.getFreeQuantity();
+    }
+
+    @PrePersist
+    private void prePersists() {
+        this.creationDate = ZonedDateTime.now();
     }
 
     public String getId() {
@@ -114,5 +125,13 @@ public class Promotion {
 
     public void setFreeQuantity(Integer freeQuantity) {
         this.freeQuantity = freeQuantity;
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(ZonedDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 }

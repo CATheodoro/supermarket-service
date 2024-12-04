@@ -1,0 +1,14 @@
+shouldReturnCreatedWhenPostProduct:
+  body: >-
+    {
+      "name": "Chip",
+      "price": 299,
+      "stockQuantity": 500
+    }
+
+shouldReturnInternalServerErrorWhenPostProduct:
+  body: >-
+    {
+      "price": 299,
+      "stockQuantity": 500
+    }

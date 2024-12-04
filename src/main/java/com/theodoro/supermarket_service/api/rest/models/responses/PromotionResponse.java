@@ -8,6 +8,8 @@ import com.theodoro.supermarket_service.domains.enumerations.PromotionEnum;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.server.core.Relation;
 
+import java.time.ZonedDateTime;
+
 @JsonPropertyOrder({
         "id",
         "code",
@@ -18,6 +20,7 @@ import org.springframework.hateoas.server.core.Relation;
         "price",
         "amount",
         "freeQuantity",
+        "creationDate"
 })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Relation(value = "Promotion", collectionRelation = "Promotions")
@@ -42,6 +45,9 @@ public class PromotionResponse extends RepresentationModel<PromotionResponse> {
     @JsonProperty("freeQuantity")
     private Integer freeQuantity;
 
+    @JsonProperty("creationDate")
+    private ZonedDateTime creationDate;
+
     public PromotionResponse(Promotion entity) {
         this.id = entity.getId();
         this.code = entity.getCode();
@@ -52,6 +58,7 @@ public class PromotionResponse extends RepresentationModel<PromotionResponse> {
         this.price = entity.getPrice();
         this.amount = entity.getAmount();
         this.freeQuantity = entity.getFreeQuantity();
+        this.creationDate = entity.getCreationDate();
     }
 
 }

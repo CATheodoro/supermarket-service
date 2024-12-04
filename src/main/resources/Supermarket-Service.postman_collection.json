@@ -15,15 +15,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/products/123",
+							"raw": "http://localhost:8081/api/products/171ec10c-14e8-4ad4-b94f-1ca2625cdb4f",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"products",
-								"123"
+								"171ec10c-14e8-4ad4-b94f-1ca2625cdb4f"
 							]
 						}
 					},
@@ -35,13 +36,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/products",
+							"raw": "http://localhost:8081/api/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"products"
 							]
 						}
@@ -55,7 +57,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"pizza\",\r\n    \"price\": 1999\r\n}",
+							"raw": "{\r\n    \"name\": \"Melancia 2\",\r\n    \"price\": 100,\r\n    \"stockQuantity\": 100\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -63,13 +65,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/products",
+							"raw": "http://localhost:8081/api/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"products"
 							]
 						}
@@ -87,13 +90,14 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/carts",
+							"raw": "http://localhost:8081/api/carts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"carts"
 							]
 						}
@@ -106,15 +110,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/carts/123",
+							"raw": "http://localhost:8081/api/carts/57461cca-77e0-4f78-ab9b-2c4aa7b21d88",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"carts",
-								"123"
+								"57461cca-77e0-4f78-ab9b-2c4aa7b21d88"
 							]
 						}
 					},
@@ -126,13 +131,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/carts",
+							"raw": "http://localhost:8081/api/carts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"carts"
 							]
 						}
@@ -145,16 +151,16 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/carts/123//clear",
+							"raw": "http://localhost:8081/api/carts/baf17761-1806-46d4-8537-6a50d43dc049/clear",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"carts",
-								"123",
-								"",
+								"baf17761-1806-46d4-8537-6a50d43dc049",
 								"clear"
 							]
 						}
@@ -172,15 +178,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/cart-items/123",
+							"raw": "http://localhost:8081/api/cart-items/ed3a2bcc-0bc9-4d94-b4d1-960c01a25cc8",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"cart-items",
-								"123"
+								"ed3a2bcc-0bc9-4d94-b4d1-960c01a25cc8"
 							]
 						}
 					},
@@ -193,7 +200,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idCart\": \"59af7476-1c73-458d-9193-ef4f0d664ae8\",\r\n    \"idProduct\": \"f81f9400-4092-439d-a018-1a761fdb9afc\",\r\n    \"quantity\": \"1\"\r\n}",
+							"raw": "{\r\n    \"idCart\": \"57461cca-77e0-4f78-ab9b-2c4aa7b21d88\",\r\n    \"idProduct\": \"3142a393-9466-4947-9959-982059fe18f6\",\r\n    \"quantity\": \"1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -201,13 +208,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/cart-items/add",
+							"raw": "http://localhost:8081/api/cart-items/add",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"cart-items",
 								"add"
 							]
@@ -226,19 +234,20 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/orders?idCart=7ad00522-71e4-42ba-8389-04a84b5c4631",
+							"raw": "http://localhost:8081/api/orders?idCart=847efb3c-6694-4a59-834e-b4b513e8dd42",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"orders"
 							],
 							"query": [
 								{
 									"key": "idCart",
-									"value": "7ad00522-71e4-42ba-8389-04a84b5c4631"
+									"value": "847efb3c-6694-4a59-834e-b4b513e8dd42"
 								}
 							]
 						}
@@ -246,20 +255,21 @@
 					"response": []
 				},
 				{
-					"name": "Buy Copy",
+					"name": "Get by id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/orders/48fe102c-950f-4faf-ab6b-0e7676837edc",
+							"raw": "http://localhost:8081/api/orders/2e027c0e-b249-4022-8a64-323f6337b6a4",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"orders",
-								"48fe102c-950f-4faf-ab6b-0e7676837edc"
+								"2e027c0e-b249-4022-8a64-323f6337b6a4"
 							]
 						}
 					},
@@ -276,15 +286,59 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/promotions/48fe102c-950f-4faf-ab6b-0e7676837edc",
+							"raw": "http://localhost:8081/api/promotions/b8481df5-06e9-4ee1-a070-5faa6da49ce0",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"promotions",
-								"48fe102c-950f-4faf-ab6b-0e7676837edc"
+								"b8481df5-06e9-4ee1-a070-5faa6da49ce0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id wiremock",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/promotions/GET_BY_ID_PRODUCT_WIREMOCK/wiremock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"promotions",
+								"GET_BY_ID_PRODUCT_WIREMOCK",
+								"wiremock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all wiremock",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/promotions/wiremock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"promotions",
+								"wiremock"
 							]
 						}
 					},
@@ -296,13 +350,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/promotions",
+							"raw": "http://localhost:8081/api/promotions",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"promotions"
 							]
 						}
@@ -316,7 +371,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"FLAT_PERCENT\",\r\n    \"description\": \"É em porcentagem o desconto\",\r\n    \"idProduct\": \"edeeebca-2af5-45c5-b05a-7c5334683c13\",\r\n    \"amount\": \"10\"\r\n}",
+							"raw": "{\r\n    \"code\": \"QTY_BASED_PRICE_OVERRIDE\",\r\n    \"description\": \"É em porcentagem o desconto\",\r\n    \"idProduct\": \"0849090c-bc8f-4950-9d7c-85c71203c9f9\",\r\n    \"requiredQuantity\": 2,\r\n    \"price\": 50,\r\n    \"amount\": null,\r\n    \"freeQuantity\": null\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -324,14 +379,61 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/promotions",
+							"raw": "http://localhost:8081/api/promotions",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
+								"api",
 								"promotions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promotion  Wiremock",
+			"item": [
+				{
+					"name": "Get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/promotions-wiremock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"promotions-wiremock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/promotions-wiremock/GET_BY_ID_WIREMOCK",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"promotions-wiremock",
+								"GET_BY_ID_WIREMOCK"
 							]
 						}
 					},
