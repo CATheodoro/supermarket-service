@@ -23,7 +23,7 @@ import static com.theodoro.supermarket_service.domains.enumerations.ExceptionMes
 
 @RestController
 public class CartEndpoint {
-    public static final String CART_RESOURCE_PATH = "/carts";
+    public static final String CART_RESOURCE_PATH = "/api/carts";
     public static final String CART_SELF_PATH = CART_RESOURCE_PATH + "/{id}";
     public static final String CART_CLEAR_PATH = CART_SELF_PATH + "/clear";
 

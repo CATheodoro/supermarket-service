@@ -18,7 +18,7 @@ import static com.theodoro.supermarket_service.domains.enumerations.ExceptionMes
 
 @RestController
 public class OrderItemEndpoint {
-    public static final String ORDER_ITEM_RESOURCE_PATH = "/order-items";
+    public static final String ORDER_ITEM_RESOURCE_PATH = "/api/order-items";
     public static final String ORDER_ITEM_SELF_PATH = ORDER_ITEM_RESOURCE_PATH + "/{id}";
 
     private final OrderItemService orderItemService;

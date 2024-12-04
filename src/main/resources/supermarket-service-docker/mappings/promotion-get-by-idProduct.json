@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPattern": "/api/promotions-wiremock/GET_BY_ID_PRODUCT_WIREMOCK"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "id": "GET_BY_ID_WIREMOCK",
+      "code": "QTY_BASED_PRICE_OVERRIDE",
+      "description": "É em porcentagem o desconto",
+      "idProduct": "GET_BY_ID_PRODUCT_WIREMOCK",
+      "active": true,
+      "requiredQuantity": 2,
+      "price": 50,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://localhost:8081/api/products/b8481df5-06e9-4ee1-a070-5faa6da49ce0"
+        }
+      ]
+    }
+  }
+}

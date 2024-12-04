@@ -21,7 +21,7 @@ import static com.theodoro.supermarket_service.domains.enumerations.ExceptionMes
 
 @RestController
 public class ProductEndpoint {
-    public static final String PRODUCT_RESOURCE_PATH = "/products";
+    public static final String PRODUCT_RESOURCE_PATH = "/api/products";
     public static final String PRODUCT_SELF_PATH = PRODUCT_RESOURCE_PATH + "/{id}";
 
     private final ProductService productService;

@@ -1,7 +1,6 @@
 package com.theodoro.supermarket_service.api.rest.assemblers;
 
 import com.theodoro.supermarket_service.api.rest.endpoints.OrderItemEndpoint;
-import com.theodoro.supermarket_service.api.rest.models.responses.CartItemResponse;
 import com.theodoro.supermarket_service.api.rest.models.responses.OrderItemResponse;
 import com.theodoro.supermarket_service.api.rest.models.responses.ProductResponse;
 import com.theodoro.supermarket_service.domains.entities.CartItem;

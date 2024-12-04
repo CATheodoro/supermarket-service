@@ -13,13 +13,13 @@ import java.util.Optional;
 public class CartItemService {
     private final CartItemRepository cartItemRepository;
     private final CartRepository cartRepository;
-    private final CalculateDiscount calculateDiscount;
+    private final CalculateDiscountService calculateDiscountService;
 
     @Autowired
-    public CartItemService(CartItemRepository cartItemRepository, CartRepository cartRepository, CalculateDiscount calculateDiscount) {
+    public CartItemService(CartItemRepository cartItemRepository, CartRepository cartRepository, CalculateDiscountService calculateDiscountService) {
         this.cartItemRepository = cartItemRepository;
         this.cartRepository = cartRepository;
-        this.calculateDiscount = calculateDiscount;
+        this.calculateDiscountService = calculateDiscountService;
     }
 
     public CartItem addItemToCart(Cart cart, CartItem cartItem, Integer cartItemsQuantity) {
@@ -28,7 +28,7 @@ public class CartItemService {
             cartItem.setQuantity(cartItem.getQuantity() + cartItemsQuantity);
         }
 
-        this.calculateDiscount.calculatePromotionDiscount(cart, cartItem);
+        this.calculateDiscountService.calculatePromotionDiscount(cart, cartItem);
 
         cartItem = cartItemRepository.save(cartItem);
         cartRepository.save(cart);

@@ -3,7 +3,6 @@ package com.theodoro.supermarket_service.api.rest.models.requests;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.lang.NonNull;
 
 public class ProductRequest {
 

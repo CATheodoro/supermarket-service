@@ -4,6 +4,7 @@ import com.theodoro.supermarket_service.api.rest.models.repositories.PromotionRe
 import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
 import com.theodoro.supermarket_service.domains.entities.Promotion;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -11,12 +12,15 @@ import java.util.Optional;
 import static com.theodoro.supermarket_service.domains.enumerations.PromotionEnum.*;
 
 @Service
-public class CalculateDiscount {
+public class CalculateDiscountService {
 
     private final PromotionRepository promotionRepository;
+    private final PromotionService promotionService;
 
-    public CalculateDiscount(PromotionRepository promotionRepository) {
+    @Autowired
+    public CalculateDiscountService(PromotionRepository promotionRepository, PromotionService promotionService) {
         this.promotionRepository = promotionRepository;
+        this.promotionService = promotionService;
     }
 
     public void calculatePromotionDiscount(Cart cart, CartItem cartItem) {
@@ -27,6 +31,7 @@ public class CalculateDiscount {
         for (CartItem item : cart.getItems()) {
             totalPrice += item.getUnitPrice() * item.getQuantity();
             Optional<Promotion> promotionOpt = promotionRepository.findFirstByIdProductAndActive(item.getIdProduct(), true);
+            //Optional<Promotion> promotionOpt = promotionService.findFindByIdWithWiremock(item.getIdProduct()); //Using Wiremock if you Want
             if (promotionOpt.isPresent()) {
                 cartItem.setIdPromotion(promotionOpt.get().getId());
                 totalDiscount += this.getDiscount(item, promotionOpt.get(), totalPrice);

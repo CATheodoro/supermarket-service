@@ -20,8 +20,10 @@ import static com.theodoro.supermarket_service.domains.enumerations.ExceptionMes
 
 @RestController
 public class PromotionEndpoint {
-    public static final String PROMOTION_RESOURCE_PATH = "/promotions";
+    public static final String PROMOTION_RESOURCE_PATH = "/api/promotions";
     public static final String PROMOTION_SELF_PATH = PROMOTION_RESOURCE_PATH + "/{id}";
+    public static final String PROMOTION_RESOURCE_WIREMOCK_SELF_PATH = PROMOTION_SELF_PATH + "/wiremock";
+    public static final String PROMOTION_RESOURCE_WIREMOCK_PATH = PROMOTION_RESOURCE_PATH + "/wiremock";
 
     private final PromotionService promotionService;
     private final PromotionAssembler promotionAssembler;
@@ -51,5 +53,17 @@ public class PromotionEndpoint {
     public ResponseEntity<PromotionResponse> findById(@PathVariable("id") final String id) {
         Promotion promotion = this.promotionService.findById(id).orElseThrow(() -> new NotFoundException(PROMOTION_ID_NOT_FOUND));
         return ResponseEntity.ok(promotionAssembler.toModel(promotion));
+    }
+
+    @GetMapping(PROMOTION_RESOURCE_WIREMOCK_SELF_PATH)
+    public ResponseEntity<PromotionResponse> findByIdWiremock(@PathVariable("id") final String id){
+        Promotion promotions = this.promotionService.findFindByIdWithWiremock(id).orElseThrow(() -> new NotFoundException(PROMOTION_ID_NOT_FOUND));
+        return ResponseEntity.ok(promotionAssembler.toModel(promotions));
+    }
+
+    @GetMapping(PROMOTION_RESOURCE_WIREMOCK_PATH)
+    public ResponseEntity<List<PromotionResponse>> findAllWiremock(){
+        List<Promotion> promotions = this.promotionService.findAllWithWiremock();
+        return ResponseEntity.ok(promotionAssembler.toList(promotions));
     }
 }

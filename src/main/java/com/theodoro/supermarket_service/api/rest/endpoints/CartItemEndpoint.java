@@ -10,7 +10,6 @@ import com.theodoro.supermarket_service.api.rest.models.services.PromotionServic
 import com.theodoro.supermarket_service.domains.entities.Cart;
 import com.theodoro.supermarket_service.domains.entities.CartItem;
 import com.theodoro.supermarket_service.domains.entities.Product;
-import com.theodoro.supermarket_service.domains.entities.Promotion;
 import com.theodoro.supermarket_service.domains.exceptions.NotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ import static com.theodoro.supermarket_service.domains.enumerations.ExceptionMes
 
 @RestController
 public class CartItemEndpoint {
-    public static final String CART_ITEM_RESOURCE_PATH = "/cart-items";
+    public static final String CART_ITEM_RESOURCE_PATH = "/api/cart-items";
     public static final String CART_ITEM_ADD_PATH = CART_ITEM_RESOURCE_PATH + "/add";
     public static final String CART_ITEM_SELF_PATH = CART_ITEM_RESOURCE_PATH + "/{id}";
 
