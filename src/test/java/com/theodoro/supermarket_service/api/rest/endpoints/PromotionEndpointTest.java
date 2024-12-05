@@ -9,9 +9,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import java.util.Objects;
 
 import static com.theodoro.supermarket_service.api.rest.endpoints.ProductEndpoint.PRODUCT_RESOURCE_PATH;
-import static com.theodoro.supermarket_service.api.rest.endpoints.ProductEndpoint.PRODUCT_SELF_PATH;
-import static com.theodoro.supermarket_service.api.rest.endpoints.PromotionEndpoint.*;
-import static com.theodoro.supermarket_service.domains.enumerations.ExceptionMessagesEnum.PRODUCT_ID_NOT_FOUND;
+import static com.theodoro.supermarket_service.api.rest.endpoints.PromotionEndpoint.PROMOTION_RESOURCE_PATH;
+import static com.theodoro.supermarket_service.api.rest.endpoints.PromotionEndpoint.PROMOTION_SELF_PATH;
 import static com.theodoro.supermarket_service.domains.enumerations.ExceptionMessagesEnum.PROMOTION_ID_NOT_FOUND;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.springframework.http.HttpHeaders.LOCATION;
@@ -41,7 +40,7 @@ public class PromotionEndpointTest extends ApplicationTests<PromotionEndpointTes
                 .andExpect(jsonPath("$.amount").doesNotExist())
                 .andExpect(jsonPath("$.freeQuantity").value(1))
                 .andExpect(jsonPath("$.creationDate").value("2025-01-11T11:00:00-03:00"))
-                .andExpect(jsonPath("$._links['self'].href").value(containsString(PRODUCT_RESOURCE_PATH)));
+                .andExpect(jsonPath("$._links['self'].href").value(containsString(uri)));
     }
 
     @Test
@@ -76,7 +75,7 @@ public class PromotionEndpointTest extends ApplicationTests<PromotionEndpointTes
                 .andExpect(jsonPath("$[0].amount").doesNotExist())
                 .andExpect(jsonPath("$[0].freeQuantity").value(1))
                 .andExpect(jsonPath("$[0].creationDate").value("2025-01-11T11:00:00-03:00"))
-                .andExpect(jsonPath("$[0].links[0].href").value(containsString(PRODUCT_RESOURCE_PATH)))
+                .andExpect(jsonPath("$[0].links[0].href").value(containsString(uri)))
 
                 .andExpect(jsonPath("$[1].id").value("ID_PROMOTION_SODA"))
                 .andExpect(jsonPath("$[1].code").value("QTY_BASED_PRICE_OVERRIDE"))
@@ -88,7 +87,7 @@ public class PromotionEndpointTest extends ApplicationTests<PromotionEndpointTes
                 .andExpect(jsonPath("$[1].amount").doesNotExist())
                 .andExpect(jsonPath("$[1].freeQuantity").doesNotExist())
                 .andExpect(jsonPath("$[1].creationDate").value("2025-01-11T11:00:00-03:00"))
-                .andExpect(jsonPath("$[1].links[0].href").value(containsString(PRODUCT_RESOURCE_PATH)))
+                .andExpect(jsonPath("$[1].links[0].href").value(containsString(uri)))
 
                 .andExpect(jsonPath("$[2].id").value("ID_PROMOTION_RICE"))
                 .andExpect(jsonPath("$[2].code").value("FLAT_PERCENT"))
@@ -100,7 +99,7 @@ public class PromotionEndpointTest extends ApplicationTests<PromotionEndpointTes
                 .andExpect(jsonPath("$[2].amount").value(10))
                 .andExpect(jsonPath("$[2].freeQuantity").doesNotExist())
                 .andExpect(jsonPath("$[2].creationDate").value("2025-01-11T11:00:00-03:00"))
-                .andExpect(jsonPath("$[2].links[0].href").value(containsString(PRODUCT_RESOURCE_PATH)));
+                .andExpect(jsonPath("$[2].links[0].href").value(containsString(uri)));
     }
 
     @Test

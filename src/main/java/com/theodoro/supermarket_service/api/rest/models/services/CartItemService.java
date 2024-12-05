@@ -27,12 +27,9 @@ public class CartItemService {
         if (cartItem.getId() != null) {
             cartItem.setQuantity(cartItem.getQuantity() + cartItemsQuantity);
         }
-
         this.calculateDiscountService.calculatePromotionDiscount(cart, cartItem);
-
         cartItem = cartItemRepository.save(cartItem);
         cartRepository.save(cart);
-
         return cartItem;
     }
 

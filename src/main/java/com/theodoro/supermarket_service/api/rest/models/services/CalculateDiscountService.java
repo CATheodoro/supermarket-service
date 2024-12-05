@@ -49,10 +49,7 @@ public class CalculateDiscountService {
         if (promotion.getCode().equals(BUY_X_GET_Y_FREE)){
             return this.calculateFreeQuantityDiscount(item.getQuantity(), promotion.getAmount(), promotion.getFreeQuantity());
         }
-        if (promotion.getCode().equals(QTY_BASED_PRICE_OVERRIDE)){
-            return this.calculateQuantityBasedPriceOverride(item.getQuantity(), promotion.getRequiredQuantity(), promotion.getPrice(), item.getUnitPrice());
-        }
-        return 0;
+        return this.calculateQuantityBasedPriceOverride(item.getQuantity(), promotion.getRequiredQuantity(), promotion.getPrice(), item.getUnitPrice());
     }
 
     private Float calculatePercentageDiscount(Integer totalPrice, Float amount){

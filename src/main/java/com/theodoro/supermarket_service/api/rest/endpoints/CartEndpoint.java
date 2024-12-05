@@ -40,7 +40,7 @@ public class CartEndpoint {
 
     @PostMapping(CART_RESOURCE_PATH)
     public ResponseEntity<URI> create(){
-        Cart cart = this.cartService.create(new Cart(0));
+        Cart cart = this.cartService.create(new Cart(0, 0, 0));
         return ResponseEntity.created(cartAssembler.buildSelfLink(cart.getId()).toUri()).build();
     }
 

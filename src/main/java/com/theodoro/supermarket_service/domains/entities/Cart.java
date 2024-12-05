@@ -25,8 +25,10 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(Integer totalPrice) {
+    public Cart(Integer totalPrice, Integer discount, Integer finalPrice) {
         this.totalPrice = totalPrice;
+        this.discount = discount;
+        this.finalPrice = finalPrice;
     }
 
     public String getId() {

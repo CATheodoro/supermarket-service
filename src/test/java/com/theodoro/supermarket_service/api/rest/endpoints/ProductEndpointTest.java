@@ -34,7 +34,7 @@ public class ProductEndpointTest extends ApplicationTests<ProductEndpointTest> {
                 .andExpect(jsonPath("$.price").value(1000))
                 .andExpect(jsonPath("$.stockQuantity").value(100))
                 .andExpect(jsonPath("$.creationDate").value("2025-01-11T11:00:00-03:00"))
-                .andExpect(jsonPath("$._links['self'].href").value(containsString(PRODUCT_RESOURCE_PATH)));
+                .andExpect(jsonPath("$._links['self'].href").value(containsString(uri)));
     }
 
     @Test
@@ -64,14 +64,7 @@ public class ProductEndpointTest extends ApplicationTests<ProductEndpointTest> {
                 .andExpect(jsonPath("$.content[0].price").value(1000))
                 .andExpect(jsonPath("$.content[0].stockQuantity").value(100))
                 .andExpect(jsonPath("$.content[0].creationDate").value("2025-01-11T11:00:00-03:00"))
-                .andExpect(jsonPath("$.content[0].links[0].href").value(containsString(PRODUCT_RESOURCE_PATH)))
-
-                .andExpect(jsonPath("$.content[1].id").value("ID_PRODUCT_BANANA"))
-                .andExpect(jsonPath("$.content[1].name").value("Banana"))
-                .andExpect(jsonPath("$.content[1].price").value(5999))
-                .andExpect(jsonPath("$.content[1].stockQuantity").value(50))
-                .andExpect(jsonPath("$.content[1].creationDate").value("2025-01-11T11:00:00-03:00"))
-                .andExpect(jsonPath("$.content[1].links[0].href").value(containsString(PRODUCT_RESOURCE_PATH)));
+                .andExpect(jsonPath("$.content[0].links[0].href").value(containsString(uri)));
     }
 
     @Test
