@@ -1,0 +1,18 @@
+shouldReturnCreatedWhenPostPromotion:
+  body: >-
+    {
+      "code": "FLAT_PERCENT",
+      "description": "Promotion for bean FLAT_PERCENT",
+      "idProduct": "ID_PRODUCT_BEAN",
+      "active": true,
+      "amount": 50
+    }
+
+shouldReturnInternalServerErrorWhenPostPromotion:
+  body: >-
+    {
+      "description": "Promotion for bean FLAT_PERCENT",
+      "idProduct": "ID_PRODUCT_BEAN",
+      "active": true,
+      "amount": 50
+    }

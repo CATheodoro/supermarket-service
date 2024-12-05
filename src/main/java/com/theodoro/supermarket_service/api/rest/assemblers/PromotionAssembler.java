@@ -1,6 +1,5 @@
 package com.theodoro.supermarket_service.api.rest.assemblers;
 
-import com.theodoro.supermarket_service.api.rest.endpoints.ProductEndpoint;
 import com.theodoro.supermarket_service.api.rest.endpoints.PromotionEndpoint;
 import com.theodoro.supermarket_service.api.rest.models.requests.PromotionRequest;
 import com.theodoro.supermarket_service.api.rest.models.responses.PromotionResponse;
@@ -23,7 +22,7 @@ public class PromotionAssembler extends RepresentationModelAssemblerSupport<Prom
     }
 
     public Link buildSelfLink(String id) {
-        return linkTo(methodOn(ProductEndpoint.class).findById(id)).withSelfRel();
+        return linkTo(methodOn(PromotionEndpoint.class).findById(id)).withSelfRel();
     }
 
     @Override

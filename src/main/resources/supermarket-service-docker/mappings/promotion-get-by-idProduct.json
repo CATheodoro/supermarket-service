@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "urlPattern": "/api/promotions-wiremock/GET_BY_ID_PRODUCT_WIREMOCK"
+    "urlPattern": "/api/promotions-wiremock/ID_PRODUCT_BEAN"
   },
   "response": {
     "status": 200,
@@ -11,8 +11,8 @@
     "jsonBody": {
       "id": "GET_BY_ID_WIREMOCK",
       "code": "QTY_BASED_PRICE_OVERRIDE",
-      "description": "É em porcentagem o desconto",
-      "idProduct": "GET_BY_ID_PRODUCT_WIREMOCK",
+      "description": "% discount",
+      "idProduct": "ID_PRODUCT_BEAN",
       "active": true,
       "requiredQuantity": 2,
       "price": 50,
